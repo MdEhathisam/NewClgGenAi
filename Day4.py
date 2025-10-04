@@ -16,12 +16,9 @@ if st.button("Send"):
 
     if myfile is not None:
 
-        file_part = Part.from_bytes(
+        uploaded_file = genai.upload_file(myfile)
 
-        data = myfile.read(),
-
-        mime_type = myfile.type
-        )
+        files.append(uploaded_file)
 
     if question is not None:
 
@@ -33,6 +30,7 @@ if st.button("Send"):
                )
 
     st.write(response.text)
+
 
 
 
