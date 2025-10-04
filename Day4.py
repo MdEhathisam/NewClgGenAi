@@ -12,29 +12,22 @@ question = st.text_input("Ask Anything")
 
 if st.button("Send"):
 
-    files = []
+    files[]
 
     if myfile is not None:
 
-        uploaded_file = genai.upload_file(myfile)
-
-        files.append(uploaded_file)
+        file_bytes = myfile.read()
 
     if question is not None:
 
         st.text_input("")
         
-    response = myaibot.models.generate_content(
-               model="gemini-2.5-flash",
+response = myaibot.models.generate_content(
+model="gemini-2.5-flash",
+               contents = ([myfile,question])
                contents = files
-               )
+)
 
-    st.write(response.text)
-
-
-
-
-
-
+st.write(response.text)
 
 
