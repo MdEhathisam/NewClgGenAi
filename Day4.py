@@ -2,55 +2,18 @@ import streamlit as st
 
 from google import genai
 
-from google.genai.types import Part
-
 myaibot = genai.Client(api_key="AIzaSyB1YeNps3ZNWaLJpGF4TpHPSGXJq1EMr3c")
 
 st.title("My Own GPT")
 
-question = st.text_area("")
+question = st.text_input("Ask Anything")
 
-myfile = st.file_uploader("Upload Images & files")
-
-mycamera = st.camera_input("Open Camera")
+myfile = st.file_uploader("Upload Images & Files")
 
 if st.button("Send"):
-
-    files = []
-
-    if question:
-
-        files.append("Ask Anything")
-
-    if myfile is not None:
-    
-        file_bytes = myfile.read()
-        
-        files.append(myfile.type)
-
-        files.append(file_bytes)
-    
-    if mycamera is not None:
-    
-        camera_bytes = mycamera.getvalue()
-        
-        files.append(camera_bytes)
-    
     response = myaibot.models.generate_content(
-               model="gemini-1.5-flash",
-               contents = files
+               model="gemini-2.5-flash",
+               contents = [myfile,question]
                )
-    
+
     st.write(response.text)
-
-
-
-
-
-
-
-
-
-
-
-
