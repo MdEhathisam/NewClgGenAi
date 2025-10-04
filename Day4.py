@@ -6,7 +6,7 @@ myaibot = genai.Client(api_key="AIzaSyB1YeNps3ZNWaLJpGF4TpHPSGXJq1EMr3c")
 
 st.title("My Own GPT")
 
-question = st.text_input("Ask Anything")
+question = st.text_area("Ask Anything")
 
 if st.button("Send"):
     response = myaibot.models.generate_content(
@@ -15,3 +15,4 @@ if st.button("Send"):
                )
 
     st.write(response.text)
+
