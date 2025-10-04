@@ -18,7 +18,7 @@ if mycamera is not None:
 
     mycamera = st.camera_input("Open Camera")
 
-    camera_ bytes = mycamera.getvalue()
+    camera_bytes = mycamera.getvalue()
 
 
 #mycamera = st.camera_input("Open Camera")
@@ -30,6 +30,7 @@ if st.button("Send"):
                )
 
     st.write(response.text)
+
 
 
 
