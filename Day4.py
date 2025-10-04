@@ -10,15 +10,16 @@ question = st.text_area("Ask Anything")
 
 myfile = st.file_uploader("Upload Images & files")
 
-mycamera = st.camera_input("Open Camera")
+#mycamera = st.camera_input("Open Camera")
 
 if st.button("Send"):
     response = myaibot.models.generate_content(
-               model="gemini-2.5-flash",
-               contents = [question,myfile,mycamera]
+               model="gemini-1.5-flash",
+               contents = [question,myfile]
                )
 
     st.write(response.text)
+
 
 
 
