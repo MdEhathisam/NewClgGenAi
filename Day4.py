@@ -8,11 +8,16 @@ st.title("My Own GPT")
 
 question = st.text_area("Ask Anything")
 
+myfile = st.file.uploader("Upload Images & files")
+
+mycamera = st.camera_input("Open Camera")
+
 if st.button("Send"):
     response = myaibot.models.generate_content(
                model="gemini-2.5-flash",
-               contents = question
+               contents = [question,myfile,mycamera]
                )
 
     st.write(response.text)
+
 
