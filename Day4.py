@@ -8,20 +8,18 @@ st.title("My Own GPT")
 
 question = st.text_area("Ask Anything")
 
-if myfile is not None:
+myfile = st.file_uploader("Upload Images & files")
 
-    myfile = st.file_uploader("Upload Images & files")
+mycamera = st.camera_input("Open Camera")
+
+if myfile is not None:
 
     file_bytes = myfile.read()
 
 if mycamera is not None:
 
-    mycamera = st.camera_input("Open Camera")
-
     camera_bytes = mycamera.getvalue()
 
-
-#mycamera = st.camera_input("Open Camera")
 
 if st.button("Send"):
     response = myaibot.models.generate_content(
@@ -30,6 +28,7 @@ if st.button("Send"):
                )
 
     st.write(response.text)
+
 
 
 
