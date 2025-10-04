@@ -18,7 +18,7 @@ if st.button("Send"):
 
         file_part = Part.from_bytes(
 
-        data = myfile.read()
+        data = myfile.read(),
 
         mime_type = myfile.type
         )
@@ -33,6 +33,7 @@ if st.button("Send"):
                )
 
     st.write(response.text)
+
 
 
 
