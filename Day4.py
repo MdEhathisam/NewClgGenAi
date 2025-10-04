@@ -26,10 +26,11 @@ if mycamera is not None:
 if st.button("Send"):
     response = myaibot.models.generate_content(
                model="gemini-1.5-flash",
-               contents = [question,file_bytes]
+               contents = [question,myfile,mycamera]
                )
 
     st.write(response.text)
+
 
 
 
