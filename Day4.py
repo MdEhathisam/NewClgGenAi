@@ -12,7 +12,7 @@ question = st.text_input("Ask Anything")
 
 if st.button("Send"):
 
-    files[]
+    files = []
 
     if myfile is not None:
 
@@ -28,6 +28,7 @@ if st.button("Send"):
                )
 
     st.write(response.text)
+
 
 
 
