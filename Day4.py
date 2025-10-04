@@ -17,10 +17,11 @@ file_bytes = myfile.read()
 if st.button("Send"):
     response = myaibot.models.generate_content(
                model="gemini-1.5-flash",
-               contents = [question,myfile]
+               contents = [question,file_bytes]
                )
 
     st.write(response.text)
+
 
 
 
