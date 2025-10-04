@@ -6,9 +6,9 @@ myaibot = genai.Client(api_key="AIzaSyB1YeNps3ZNWaLJpGF4TpHPSGXJq1EMr3c")
 
 st.title("My Own GPT")
 
-question = st.text_input("Ask Anything")
-
 myfile = st.file_uploader("Upload Images & Files")
+
+question = st.text_input("Ask Anything")
 
 if st.button("Send"):
     response = myaibot.models.generate_content(
@@ -17,3 +17,4 @@ if st.button("Send"):
                )
 
     st.write(response.text)
+
