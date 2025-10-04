@@ -10,6 +10,8 @@ question = st.text_area("Ask Anything")
 
 myfile = st.file_uploader("Upload Images & files")
 
+file_bytes = myfile.read()
+
 #mycamera = st.camera_input("Open Camera")
 
 if st.button("Send"):
@@ -19,6 +21,7 @@ if st.button("Send"):
                )
 
     st.write(response.text)
+
 
 
 
