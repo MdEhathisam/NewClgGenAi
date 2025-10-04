@@ -16,7 +16,11 @@ if st.button("Send"):
 
     if myfile is not None:
 
+        file_part = Part.from_bytes
+
         file_bytes = myfile.read()
+
+        mime_type = myfile.type()
 
     if question is not None:
 
@@ -28,6 +32,7 @@ if st.button("Send"):
                )
 
     st.write(response.text)
+
 
 
 
