@@ -26,7 +26,9 @@ if st.button("Send"):
     
         file_bytes = myfile.read()
         
-        files.append(myfile.type,file_bytes)
+        files.append(myfile.type)
+
+        files.append(file_bytes)
     
     if mycamera is not None:
     
@@ -40,6 +42,7 @@ if st.button("Send"):
                )
     
     st.write(response.text)
+
 
 
 
