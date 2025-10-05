@@ -51,12 +51,7 @@ if plus_button:
 
 # --- Send Button and Response ---
 if st.button("Send"):
-response = myaibot.models.generate_content(
-model="gemini-2.5-flash",
-contents = question
-)
 
-st.write(response.text)
     # Check if the question is empty
     if not question:
         st.warning("Please ask a question!")
@@ -67,3 +62,4 @@ st.write(response.text)
             contents=question
         )
         st.write(response.text)
+
