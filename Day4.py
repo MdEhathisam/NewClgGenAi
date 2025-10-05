@@ -49,15 +49,18 @@ send_button = st.button("Send")
 
 if send_button:
 
-    contents = [question]
-    if add_button:
-        contents.append("You clicked the + button!")
-    response = myaibot.models.generate_content(
+    st.warning("⚠️ Custom HTML textarea does not return value directly. Use st.text_area for backend logic.")
+
+    #contents = [question]
+    #if add_button:
+     #   contents.append("You clicked the + button!")
+    #response = myaibot.models.generate_content(
                model="gemini-2.5-flash",
                contents = contents
                )
 
-    st.write(response.text)
+    #st.write(response.text)
+
 
 
 
