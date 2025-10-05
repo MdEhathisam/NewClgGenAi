@@ -14,16 +14,16 @@ if st.button("Send"):
   if myfiles is not None:
     file_data = myfiles.read()
 
-    model = genai.GenerativeModel("gemini-2.5-flash", client=myaibot)
-    response = model.generate_content(
-  
-    contents = [
-        {  
-          "role":"user","parts":[
-                            {"text":question},
-                            {"inline_data":{"mime_type":myfiles.type,"data":file_data}}
+    response = myaibot.models.generate_content(
+            model="gemini-2.5-flash",
+            contents = [
+              {  
+                    "role":"user",
+                    "parts":[
+                        {"text":question},
+                        {"inline_data":{"mime_type":myfiles.type,"data":file_data}}
                ]
-        }
+              }
       ]
     )
 
