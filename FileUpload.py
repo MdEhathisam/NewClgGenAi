@@ -13,8 +13,10 @@ question = st.text_input("Ask Anything")
 if st.button("Send"):
   if myfiles is not None:
     file_data = myfiles.read()
-    response = myaibot.models.generate_content(
-    model="gemini-2.5-flash",
+
+    model = myaibot.models.get("gemini-2.5-flash")
+    response = model.generate_content(
+    ,
     contents = [
         {  
           "role":"user","parts":[
