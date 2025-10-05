@@ -14,7 +14,7 @@ if st.button("Send"):
   if myfiles is not None:
     file_data = myfiles.read()
 
-    model = myaibot.models.get("gemini-2.5-flash")
+    model = genai.GenerativeModel("gemini-2.5-flash", client=myaibot)
     response = model.generate_content(
   
     contents = [
