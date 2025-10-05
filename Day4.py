@@ -21,13 +21,14 @@ if send_button:
 
     contents = [question]
     if add_button:
-        contents.append("Add button clicked!")
+        contents.append("You clicked the + button!")
     response = myaibot.models.generate_content(
                model="gemini-2.5-flash",
                contents = contents
                )
 
     st.write(response.text)
+
 
 
 
