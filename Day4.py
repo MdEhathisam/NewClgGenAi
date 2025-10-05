@@ -13,9 +13,10 @@ add = st.chat_input("+")
 if st.button("Send"):
     response = myaibot.models.generate_content(
                model="gemini-2.5-flash",
-               contents = (question,add)
+               contents = [question,add]
                )
 
     st.write(response.text)
+
 
 
