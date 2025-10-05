@@ -6,7 +6,7 @@ myaibot = genai.Client(api_key="AIzaSyB1YeNps3ZNWaLJpGF4TpHPSGXJq1EMr3c")
 
 st.title("My Own GPT")
 
-myfiles = st.file_uploader("Upload Files", type=["jpeg","jpg","png","pdf","doc","docx"])
+myfiles = st.file_uploader("Upload Files", type=["jpeg","jpg","png","pdf"])
 
 question = st.text_input("Ask Anything")
 
