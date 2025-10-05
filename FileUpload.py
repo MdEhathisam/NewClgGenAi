@@ -11,7 +11,7 @@ myfiles = st.file_uploader("Upload Image", type=["jpeg","jpg","png","pdf","doc",
 question = st.text_input("Ask Anything")
 
 if st.button("Send"):
-  if myimage is not None:
+  if myfile is not None:
     response = myaibot.models.generate_content(
     model="gemini-2.5-flash",
     contents = [{"role":"user","parts":[{"text":question},{"inline_data":{"mime_type":myfiles.type,"data":myfiles.read()}}]}]
