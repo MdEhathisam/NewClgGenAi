@@ -8,15 +8,14 @@ st.title("My Own GPT")
 
 question = st.text_input("Ask Anything")
 
-with st.expander("Click to expand"):
-
-    st.write("This content is hidden by default and expanded by '+' icon.")
+add = st.chat_input("+")
 
 if st.button("Send"):
     response = myaibot.models.generate_content(
                model="gemini-2.5-flash",
-               contents = question
+               contents = (question,add)
                )
 
     st.write(response.text)
+
 
