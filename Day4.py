@@ -6,13 +6,14 @@ myaibot = genai.Client(api_key="AIzaSyB1YeNps3ZNWaLJpGF4TpHPSGXJq1EMr3c")
 
 st.title("My Own GPT")
 
-col1,col2 = st.columns([5, 0.6])
+col1,col2 = st.columns([5, 1])
 
 with col1:
     question = st.text_area("Ask Anything", height = 10, label_visibility = "collapsed")
 
 with col2:
-    st.markdown("<br>", unsafe_allow_html=True) 
+    st.write("")
+    st.write("")
     add_button = st.button("+",use_container_width = True)
 
 send_button = st.button("Send")
@@ -28,6 +29,7 @@ if send_button:
                )
 
     st.write(response.text)
+
 
 
 
