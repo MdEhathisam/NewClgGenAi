@@ -8,7 +8,7 @@ st.title("My Own GPT")
 
 question = st.text_input("Ask Anything")
 
-add = st.chat_input("+")
+add = st.button("+")
 
 if st.button("Send"):
     response = myaibot.models.generate_content(
@@ -17,6 +17,7 @@ if st.button("Send"):
                )
 
     st.write(response.text)
+
 
 
 
