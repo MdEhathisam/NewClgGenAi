@@ -1,59 +1,69 @@
 import streamlit as st
-# The next line is commented out as the API key should ideally be handled 
-# securely, but is kept for context based on your original prompt structure.
-# from google import genai 
 
-# Initialize your AI client (using a placeholder for a secure setup)
-# NOTE: It's best practice to use st.secrets for API keys instead of hardcoding.
-# try:
-#     myaibot = genai.Client(api_key="AIzaSyB1YeNps3ZNWaLJpGF4TpHPSGXJq1EMr3c")
-# except NameError:
-#     st.error("Please ensure the 'google' library and 'genai' are properly installed.")
+from google import genai
 
-# Using a dummy object for demonstration if the genai library isn't runable here
-class MockClient:
-    class MockModels:
-        def generate_content(self, model, contents):
-            class MockResponse:
-                text = f"🤖 AI Response to '{contents}': This is a demonstration. Your question was processed by the Gemini-2.5-flash model (simulated)."
-            return MockResponse()
-    
-    def __init__(self, api_key):
-        self.models = self.MockModels()
-
-myaibot = MockClient(api_key="AIzaSyB1YeNps3ZNWaLJpGF4TpHPSGXJq1EMr3c")
+# NOTE: For security, never hardcode API keys in production code. 
+# Use st.secrets or environment variables.
+myaibot = genai.Client(api_key="AIzaSyB1YeNps3ZNWaLJpGF4TpHPSGXJq1EMr3c")
 
 st.title("My Own GPT")
 
-# --- Layout for '+' Button and Text Input ---
-
-# 1. Create two columns: one narrow (1 unit) for the button, one wide (10 units) for the text input.
-col_plus, col_input = st.columns([1, 10])
-
-with col_plus:
-    # 2. Place the '+' button in the left column.
-    # The button will automatically align vertically with the text input.
-    plus_button = st.button("➕", key="plus_button")
-    
-with col_input:
-    # 3. Place the text input in the right column.
-    # label_visibility="collapsed" removes the label above the input, 
-    # making the layout look cleaner and aligning the input better with the button.
-    question = st.text_input("Ask Anything", label_visibility="collapsed")
-
-# --- Expander and Send Button ---
+question = st.text_input("Ask Anything")
 
 with st.expander("Click to expand"):
+
     st.write("This content is hidden by default and expanded by '+' icon.")
 
-if st.button("Send"):
-    # Run the AI generation logic
-    response = myaibot.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=question
-    )
-    st.write(response.text)
+# 1. Use columns to place the button-like element and the text input side-by-side.
+# [1, 10] ratio keeps the button area small and the text input wide.
+col1, col2 = st.columns([1, 10])
 
-# --- Logic for '+' Button Action ---
+# --- Input Area Layout ---
+with col1:
+    # Option A: Use a simple button (less integrated look)
+    # plus_button = st.button("➕", key="options_btn")
+    
+    # Option B: Use an Expander (More functional, though it expands *below* the button)
+    # For a button-like appearance that triggers an action, a simple button (Option A) is better.
+    # Let's stick with the request for a '+' button next to the input.
+    plus_button = st.button("➕", key="options_btn", help="Click to open advanced options")
+    
+
+with col2:
+    # Use label_visibility="collapsed" to remove the label above the input, 
+    # making it align well with the button.
+    question = st.text_input("Ask Anything", label_visibility="collapsed")
+
+# --- Expandable Options ---
+# The expander you want to show can be toggled based on the plus_button click.
 if plus_button:
-    st.sidebar.info("➕ Plus Button Clicked! You can use this to open advanced settings or upload files (e.g., using `st.file_uploader`).")
+    # Alternatively, you can use the built-in expander and place it here 
+    # to appear right below the input line.
+    with st.expander("Advanced Options"):
+        #st.write("This section appears when the '+' button is clicked.")
+        st.file_uploader("Upload context file (e.g., PDF, TXT)")
+        st.slider("Creativity Level", 0.0, 1.0, 0.7)
+
+# The original expander is separate and doesn't look like it's connected 
+# to the text area, so we'll remove it from the final code:
+# with st.expander("Click to expand"):
+#     st.write("This content is hidden by default and expanded by '+' icon.")
+
+# --- Send Button and Response ---
+if st.button("Send"):
+response = myaibot.models.generate_content(
+model="gemini-2.5-flash",
+contents = question
+)
+
+st.write(response.text)
+    # Check if the question is empty
+    if not question:
+        st.warning("Please ask a question!")
+    else:
+        # Generate content
+        response = myaibot.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=question
+        )
+        st.write(response.text)
