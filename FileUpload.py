@@ -16,7 +16,7 @@ if st.button("Send"):
 
     model = myaibot.models.get("gemini-2.5-flash")
     response = model.generate_content(
-    ,
+  
     contents = [
         {  
           "role":"user","parts":[
