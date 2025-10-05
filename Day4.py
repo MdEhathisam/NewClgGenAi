@@ -9,7 +9,7 @@ st.title("My Own GPT")
 col1,col2 = st.columns([4,1])
 
 with col1:
-    question = st.text_area("Ask Anything", height = 30, label_visibility = "collapsed")
+    question = st.text_area("Ask Anything", height = 10, label_visibility = "collapsed")
 
 with col2:
     add_button = st.button("+",use_container_width = True)
@@ -27,6 +27,7 @@ if send_button:
                )
 
     st.write(response.text)
+
 
 
 
