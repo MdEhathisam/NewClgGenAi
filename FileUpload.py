@@ -16,12 +16,13 @@ if st.button("Send"):
     response = myaibot.models.generate_content(
     model="gemini-2.5-flash",
     contents = [
-      {"role":"user","parts":
-       [
-         {"text":question},
-         {"inline_data":{"mime_type":myfiles.type,"data":file_data}}
-       ]}
-    ]
+        {  
+          "role":"user","parts":[
+                            {"text":question},
+                            {"inline_data":{"mime_type":myfiles.type,"data":file_data}}
+               ]
+        }
+      ]
     )
 
     st.write(response.text)
