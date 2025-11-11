@@ -6,7 +6,7 @@ myaibot = genai.Client(api_key="AIzaSyB1YeNps3ZNWaLJpGF4TpHPSGXJq1EMr3c")
 
 st.title("My Own GPT")
 
-myfiles = st.file_uploader("Upload Files", type=["jpeg","jpg","png","pdf","txt","mkv","mp4","mp3","doc","docx"])
+myfiles = st.file_uploader("Upload Files", type=["jpeg","jpg","png","pdf","txt","mkv","mp4","mp3"])
 
 myfilesread = myfiles
 
