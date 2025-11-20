@@ -15,10 +15,4 @@ if st.button("Send"):
   )
 
   st.write(response.text)
- 
-
-
-
-
-
-
+  st.session(response)
