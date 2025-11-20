@@ -5,6 +5,11 @@ from google import genai
 myaibot = genai.Client(api_key="AIzaSyB1YeNps3ZNWaLJpGF4TpHPSGXJq1EMr3c")
 
 st.title("My Own GPT")
+if "messages" not in st.session_state:
+
+    st.session_state.messages = []   
+
+
 
 question = st.text_input("Ask Anything")
 
@@ -15,4 +20,5 @@ if st.button("Send"):
   )
 
   st.write(response.text)
+
 
