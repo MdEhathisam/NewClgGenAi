@@ -26,7 +26,7 @@ for msg in st.session_state.messages:
 
 question = st.text_input("Ask Anything")
 
-if question:
+if question("send"):
 
     # Save user message
 
@@ -51,5 +51,6 @@ if question:
     st.session_state.messages.append({"role": "assistant", "content": ai_reply})
 
     st.chat_message("assistant").markdown(ai_reply)
+
 
 
