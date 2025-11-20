@@ -24,18 +24,32 @@ for msg in st.session_state.messages:
         st.chat_message("assistant").markdown(msg["content"])
 
 
-
-
 question = st.text_input("Ask Anything")
 
-if st.button("Send"):
-  response = myaibot.models.generate_content(
-  model="gemini-2.5-flash",
-  contents = question
-  )
+if question:
 
-  st.write(response.text)
+    # Save user message
 
+    st.session_state.messages.append({"role": "user", "content": question})
 
+    st.chat_message("user").markdown(question)
+
+    # Send request to AI model
+
+    response = myaibot.models.generate_content(
+
+        model="gemini-2.5-flash",
+
+        contents=question
+
+    )
+
+    ai_reply = response.text
+
+    # Save bot message
+
+    st.session_state.messages.append({"role": "assistant", "content": ai_reply})
+
+    st.chat_message("assistant").markdown(ai_reply)
 
 
