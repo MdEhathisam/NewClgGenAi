@@ -22,9 +22,10 @@ if st.button("Send") and question:
 st.session_state.messages.append({"role":"assistant","content": response.text})
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
-   st.markdown(msg["content"])
+        st.markdown(msg["content"])
 
 
   #st.write(response.text)
+
 
 
