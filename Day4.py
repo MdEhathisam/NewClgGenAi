@@ -6,6 +6,8 @@ myaibot = genai.Client(api_key="AIzaSyB1YeNps3ZNWaLJpGF4TpHPSGXJq1EMr3c")
 
 st.title("My Own GPT")
 
+#Chat History Setup
+
 if "messages" not in st.session_state:
 
     st.session_state.messages = []   
@@ -33,6 +35,7 @@ if st.button("Send"):
   )
 
   st.write(response.text)
+
 
 
 
