@@ -12,8 +12,11 @@ question = st.text_input("Ask Anything")
 
 if st.button("Send") and question:
        st.session_state.messages.append({"role":"user","content": question})
-  response = myaibot.models.generate_content(
+  response = 
+myaibot.models.generate_content(
+  
   model="gemini-2.5-flash",
+  
   contents = st.session_state.messages
   )
 st.session_state.messages.append({"role":"assistant","content": response.text})
