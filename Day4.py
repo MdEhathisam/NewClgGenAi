@@ -11,7 +11,7 @@ if "messages" not in st.session_state:
 question = st.text_input("Ask Anything")
 
 if st.button("Send") and question:
-       st.session_state.messages.append({"role":"user","content"})
+       st.session_state.messages.append({"role":"user","content": question})
   response = myaibot.models.generate_content(
   model="gemini-2.5-flash",
   contents = st.session_state.messages
