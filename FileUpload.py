@@ -2,7 +2,7 @@ import streamlit as st
 
 from google import genai
 
-myaibot = genai.Client(api_key="AIzaSyB1YeNps3ZNWaLJpGF4TpHPSGXJq1EMr3c") 
+myaibot = genai.Client(api_key="AIzaSyBpufwQ8VIL59WYkFjeN3wYVx_tyzsT5Vk") 
 
 st.title("My Own GPT")
 
